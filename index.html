@@ -7,9 +7,9 @@
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap');
 
         :root {
-            --bg-color: #F5F4F0; /* Светлый бежевый как в дневнике */
-            --dark-green: #1A2B22; /* Изумрудный/темно-зеленый */
-            --accent-line: #D4CFC6;
+            --bg-color: #F8F7F3; /* Более теплый бежевый бумажный цвет */
+            --dark-green: #1F3B2B; /* Более явный благородный изумрудный */
+            --accent-line: #D1C9B8; /* Бежево-золотистая линия */
         }
 
         body {
@@ -23,22 +23,20 @@
 
         .page {
             width: 210mm;
-            height: 297mm; /* Строго А4 */
+            min-height: 297mm; /* Гибкая высота для браузера */
             background-color: var(--bg-color);
             margin: 20px 0;
-            padding: 15mm 20mm;
+            padding: 12mm 15mm; /* Уменьшили отступы, чтобы все влезло */
             box-sizing: border-box;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             display: flex;
             flex-direction: column;
-            overflow: hidden;
         }
 
-        /* Верхняя полоска как в дневнике */
         .top-bar {
             display: flex;
             align-items: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-size: 8px;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -55,24 +53,24 @@
 
         h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 38px;
-            font-weight: 500;
+            font-size: 36px;
+            font-weight: 600;
             text-align: center;
             margin: 0 0 5px 0;
             line-height: 1.1;
         }
 
         .subtitle {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 300;
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .blocks-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            column-gap: 30px;
+            column-gap: 25px;
             row-gap: 15px;
             flex-grow: 1;
         }
@@ -89,8 +87,8 @@
             background-color: var(--dark-green);
             color: var(--bg-color);
             padding: 4px 10px;
-            border-radius: 20px; /* Та самая плашка */
-            font-size: 9px;
+            border-radius: 20px;
+            font-size: 8px;
             font-weight: 500;
             letter-spacing: 1px;
             margin-right: 10px;
@@ -98,14 +96,14 @@
 
         .block-title-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
+            font-size: 19px;
             font-weight: 600;
         }
 
         .item {
-            font-size: 11px;
-            line-height: 1.5;
-            margin-bottom: 8px;
+            font-size: 10.5px;
+            line-height: 1.4;
+            margin-bottom: 6px;
             display: flex;
             align-items: flex-start;
         }
@@ -122,12 +120,12 @@
         .footer-results {
             margin-top: 15px;
             border-top: 1px solid var(--accent-line);
-            padding-top: 15px;
+            padding-top: 12px;
         }
 
         .footer-results h3 {
             font-family: 'Cormorant Garamond', serif;
-            margin: 0 0 10px 0;
+            margin: 0 0 8px 0;
             font-size: 20px;
             font-weight: 600;
         }
@@ -141,23 +139,23 @@
         .final-cta {
             margin-top: 15px;
             text-align: center;
-            background-color: rgba(26, 43, 34, 0.04);
-            padding: 20px;
+            background-color: rgba(31, 59, 43, 0.05); /* Легкий зеленый фон */
+            padding: 15px;
             border-radius: 8px;
         }
 
         .final-cta h2 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 22px;
-            margin: 0 0 10px 0;
+            margin: 0 0 8px 0;
             font-weight: 600;
         }
 
         .final-cta p {
             font-size: 11px;
-            line-height: 1.5;
-            margin: 0 auto 15px auto;
-            max-width: 90%;
+            line-height: 1.4;
+            margin: 0 auto 12px auto;
+            max-width: 95%;
         }
 
         .cta-button {
@@ -166,8 +164,8 @@
             color: var(--bg-color);
             text-decoration: none;
             padding: 10px 25px;
-            border-radius: 20px; /* Кнопка-плашка */
-            font-size: 10px;
+            border-radius: 20px;
+            font-size: 9px;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 500;
@@ -178,13 +176,14 @@
             font-size: 8px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-top: 15px;
+            margin-top: auto;
+            padding-top: 15px;
             opacity: 0.6;
         }
 
         @media print {
             body { background: none; }
-            .page { margin: 0; box-shadow: none; page-break-after: always; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .page { margin: 0; height: 297mm; box-shadow: none; page-break-after: always; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
     </style>
 </head>
