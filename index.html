@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Чек-лист: Упаковка профиля</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap');
+
+        :root {
+            --bg-color: #F8F7F3; /* Эстетичный бежевый фон */
+            --dark-green: #1C2E24; /* Глубокий зеленый для акцентов */
+            --text-color: #333333;
+            --accent: #A89F91; /* Приглушенный золотисто-бежевый */
+        }
+
+        body {
+            margin: 0;
+            background-color: #e5e5e5;
+            display: flex;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background-color: var(--bg-color);
+            margin: 20px 0;
+            padding: 25mm 20mm;
+            box-sizing: border-box;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .pre-title {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--dark-green);
+            margin: 0 0 10px 0;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            font-weight: 300;
+            color: #555;
+            letter-spacing: 1px;
+        }
+
+        .blocks-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 30px;
+            row-gap: 25px;
+            flex-grow: 1;
+        }
+
+        .block {
+            break-inside: avoid;
+        }
+
+        .block-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--dark-green);
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(28, 46, 36, 0.2);
+            padding-bottom: 5px;
+        }
+
+        .item {
+            font-size: 11px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .circle {
+            width: 10px;
+            height: 10px;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            margin-right: 12px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .footer-results {
+            margin-top: 30px;
+            margin-bottom: 20px;
+            background-color: var(--dark-green);
+            color: #F8F7F3;
+            padding: 20px 25px;
+            border-radius: 6px;
+        }
+
+        .footer-results h3 {
+            font-family: 'Cormorant Garamond', serif;
+            margin: 0 0 12px 0;
+            font-size: 22px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .result-item {
+            font-size: 11.5px;
+            margin-bottom: 8px;
+            line-height: 1.5;
+            font-weight: 300;
+        }
+
+        .result-item strong {
+            font-weight: 500;
+            color: #fff;
+        }
+
+        /* Элегантная подпись внизу страницы */
+        .copyright {
+            text-align: center;
+            font-size: 9px;
+            color: #A89F91;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: auto;
+            padding-top: 10px;
+        }
+
+        /* Настройки для идеального экспорта в PDF */
+        @media print {
+            body { background: none; }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+                height: 100%;
+                page-break-after: always;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="content">
+        <div class="header">
+            <div class="pre-title">Самоаудит для помогающих практиков</div>
+            <h1>Чек-лист профиля</h1>
+            <div class="subtitle">24 шага к доверию и комфортной записи клиентов</div>
+        </div>
+
+        <div class="blocks-container">
+            <div class="block">
+                <div class="block-title">1. Профиль и смыслы</div>
+                <div class="item"><div class="circle"></div>Понятно, кто вы и с какими запросами помогаете.</div>
+                <div class="item"><div class="circle"></div>Указана специализация без слишком абстрактных фраз.</div>
+                <div class="item"><div class="circle"></div>В шапке есть понятный призыв и удобная ссылка для связи.</div>
+                <div class="item"><div class="circle"></div>Имя и ник легко читаются и запоминаются.</div>
+            </div>
+
+            <div class="block">
+                <div class="block-title">2. Контент и контакт</div>
+                <div class="item"><div class="circle"></div>Есть закрепленные материалы с ответами на частые вопросы.</div>
+                <div class="item"><div class="circle"></div>Тексты разделены на абзацы, их приятно и легко читать.</div>
+                <div class="item"><div class="circle"></div>В блоге есть польза, рассказ о вас и приглашение на сессии.</div>
+                <div class="item"><div class="circle"></div>ИИ помогает с текстами, но в них чувствуется ваш живой голос.</div>
+                <div class="item"><div class="circle"></div>Темы постов отвечают на реальные переживания вашей аудитории.</div>
+            </div>
+
+            <div class="block">
+                <div class="block-title">3. Услуги и прозрачность</div>
+                <div class="item"><div class="circle"></div>Понятно, с чего начать работу (диагностика или первая сессия).</div>
+                <div class="item"><div class="circle"></div>Стоимость услуг открыта и понятна сразу.</div>
+                <div class="item"><div class="circle"></div>Услуги описаны ясно: для кого, как проходит и что дает.</div>
+                <div class="item"><div class="circle"></div>Записаться легко, это не требует долгих переписок.</div>
+                <div class="item"><div class="circle"></div>Бережно, но четко обозначены правила отмены и переноса встреч.</div>
+            </div>
+
+            <div class="block">
+                <div class="block-title">4. Доверие и безопасность</div>
+                <div class="item"><div class="circle"></div>Есть примеры из практики — экологично и конфиденциально.</div>
+                <div class="item"><div class="circle"></div>Можно найти отклики и отзывы реальных людей.</div>
+                <div class="item"><div class="circle"></div>Понятно ваше образование, методы и подход в работе.</div>
+                <div class="item"><div class="circle"></div>Вы открыто говорите о своих профессиональных ценностях.</div>
+                <div class="item"><div class="circle"></div>Вы не даете нереалистичных гарантий и обещаний.</div>
+            </div>
+
+            <div class="block" style="grid-column: 1 / -1;">
+                <div class="block-title">5. Визуал и эстетика</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 30px;">
+                    <div>
+                        <div class="item"><div class="circle"></div>Фотографии приятные, хорошего качества, без тяжелых фильтров.</div>
+                        <div class="item"><div class="circle"></div>Внешний вид профиля аккуратный и отражает ваш характер.</div>
+                        <div class="item"><div class="circle"></div>Рабочие материалы (памятки, гайды) оформлены в едином стиле.</div>
+                    </div>
+                    <div>
+                        <div class="item"><div class="circle"></div>В блоге есть вы, а не только картинки из интернета.</div>
+                        <div class="item"><div class="circle"></div>Шрифты на видео и фото легко читаются.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-results">
+            <h3>Результаты (1 галочка = 1 балл):</h3>
+            <div class="result-item"><strong>20-24 балла:</strong> Прекрасная база. Людям комфортно в вашем профиле, они понимают вашу ценность и готовы записываться на сессии.</div>
+            <div class="result-item"><strong>12-19 баллов:</strong> Хорошее начало, но есть слепые зоны. Закройте пробелы, чтобы аудитории было проще решиться на работу с вами.</div>
+            <div class="result-item"><strong>0-11 баллов:</strong> Требуется доработка. Сейчас людям сложно понять, чем именно вы можете им помочь, из-за чего они уходят к другим специалистам.</div>
+        </div>
+        
+        <div class="copyright">Анна Энынь | anyainin</div>
+    </div>
+</div>
+
+</body>
+</html>
