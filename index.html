@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <title>Чек-лист: Упаковка профиля</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap');
 
         :root {
-            --bg-color: #F8F7F3; /* Эстетичный бежевый фон */
-            --dark-green: #1C2E24; /* Глубокий зеленый для акцентов */
-            --text-color: #333333;
-            --accent: #A89F91; /* Приглушенный золотисто-бежевый */
+            --bg-color: #F5F4F0; /* Светлый бежевый как в дневнике */
+            --dark-green: #1A2B22; /* Изумрудный/темно-зеленый */
+            --accent-line: #D4CFC6;
         }
 
         body {
@@ -19,223 +18,274 @@
             display: flex;
             justify-content: center;
             font-family: 'Montserrat', sans-serif;
-            color: var(--text-color);
+            color: var(--dark-green);
         }
 
         .page {
             width: 210mm;
-            min-height: 297mm;
+            height: 297mm; /* Строго А4 */
             background-color: var(--bg-color);
             margin: 20px 0;
-            padding: 25mm 20mm;
+            padding: 15mm 20mm;
             box-sizing: border-box;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            position: relative;
-        }
-
-        .content {
-            position: relative;
-            z-index: 2;
-            height: 100%;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .pre-title {
-            font-size: 10px;
+        /* Верхняя полоска как в дневнике */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 8px;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent);
-            margin-bottom: 10px;
+            letter-spacing: 2px;
+            color: var(--dark-green);
+            font-weight: 500;
+        }
+
+        .top-line {
+            flex-grow: 1;
+            height: 1px;
+            background-color: var(--accent-line);
+            margin: 0 15px;
         }
 
         h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 42px;
-            font-weight: 600;
-            color: var(--dark-green);
-            margin: 0 0 10px 0;
+            font-size: 38px;
+            font-weight: 500;
+            text-align: center;
+            margin: 0 0 5px 0;
             line-height: 1.1;
         }
 
         .subtitle {
             font-size: 13px;
             font-weight: 300;
-            color: #555;
-            letter-spacing: 1px;
+            text-align: center;
+            margin-bottom: 25px;
         }
 
         .blocks-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             column-gap: 30px;
-            row-gap: 25px;
+            row-gap: 15px;
             flex-grow: 1;
         }
 
-        .block {
-            break-inside: avoid;
+        .block-title-wrap {
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--accent-line);
+            padding-bottom: 5px;
+            display: flex;
+            align-items: center;
         }
 
-        .block-title {
+        .badge {
+            background-color: var(--dark-green);
+            color: var(--bg-color);
+            padding: 4px 10px;
+            border-radius: 20px; /* Та самая плашка */
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-right: 10px;
+        }
+
+        .block-title-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 600;
-            color: var(--dark-green);
-            margin-bottom: 12px;
-            border-bottom: 1px solid rgba(28, 46, 36, 0.2);
-            padding-bottom: 5px;
         }
 
         .item {
             font-size: 11px;
-            line-height: 1.6;
-            margin-bottom: 10px;
+            line-height: 1.5;
+            margin-bottom: 8px;
             display: flex;
             align-items: flex-start;
         }
 
-        .circle {
-            width: 10px;
-            height: 10px;
-            border: 1px solid var(--accent);
-            border-radius: 50%;
-            margin-right: 12px;
-            margin-top: 3px;
+        .line-input {
+            width: 15px;
+            border-bottom: 1px solid var(--dark-green);
+            margin-right: 10px;
+            margin-top: 10px;
             flex-shrink: 0;
+            opacity: 0.5;
         }
 
         .footer-results {
-            margin-top: 30px;
-            margin-bottom: 20px;
-            background-color: var(--dark-green);
-            color: #F8F7F3;
-            padding: 20px 25px;
-            border-radius: 6px;
+            margin-top: 15px;
+            border-top: 1px solid var(--accent-line);
+            padding-top: 15px;
         }
 
         .footer-results h3 {
             font-family: 'Cormorant Garamond', serif;
-            margin: 0 0 12px 0;
-            font-size: 22px;
-            font-weight: 400;
-            letter-spacing: 1px;
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            font-weight: 600;
         }
 
         .result-item {
-            font-size: 11.5px;
-            margin-bottom: 8px;
+            font-size: 11px;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .final-cta {
+            margin-top: 15px;
+            text-align: center;
+            background-color: rgba(26, 43, 34, 0.04);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .final-cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            margin: 0 0 10px 0;
+            font-weight: 600;
+        }
+
+        .final-cta p {
+            font-size: 11px;
             line-height: 1.5;
-            font-weight: 300;
+            margin: 0 auto 15px auto;
+            max-width: 90%;
         }
 
-        .result-item strong {
+        .cta-button {
+            display: inline-block;
+            background-color: var(--dark-green);
+            color: var(--bg-color);
+            text-decoration: none;
+            padding: 10px 25px;
+            border-radius: 20px; /* Кнопка-плашка */
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             font-weight: 500;
-            color: #fff;
         }
 
-        /* Элегантная подпись внизу страницы */
         .copyright {
             text-align: center;
-            font-size: 9px;
-            color: #A89F91;
-            letter-spacing: 1.5px;
+            font-size: 8px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            margin-top: auto;
-            padding-top: 10px;
+            margin-top: 15px;
+            opacity: 0.6;
         }
 
-        /* Настройки для идеального экспорта в PDF */
         @media print {
             body { background: none; }
-            .page {
-                margin: 0;
-                box-shadow: none;
-                width: 100%;
-                height: 100%;
-                page-break-after: always;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
+            .page { margin: 0; box-shadow: none; page-break-after: always; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
     </style>
 </head>
 <body>
 
 <div class="page">
-    <div class="content">
-        <div class="header">
-            <div class="pre-title">Самоаудит для помогающих практиков</div>
-            <h1>Чек-лист профиля</h1>
-            <div class="subtitle">24 шага к доверию и комфортной записи клиентов</div>
+    <div class="top-bar">
+        <span class="top-left">ЧЕК-ЛИСТ</span>
+        <div class="top-line"></div>
+        <span class="top-right">УПАКОВКА / ПРОФИЛЬ</span>
+    </div>
+
+    <h1>Чек-лист профиля</h1>
+    <div class="subtitle">24 шага к доверию и комфортной записи клиентов</div>
+
+    <div class="blocks-container">
+        <div class="block">
+            <div class="block-title-wrap">
+                <span class="badge">БЛОК 1</span>
+                <span class="block-title-text">Профиль и смыслы</span>
+            </div>
+            <div class="item"><div class="line-input"></div>Понятно, кто вы и с какими запросами помогаете.</div>
+            <div class="item"><div class="line-input"></div>Указана специализация без слишком абстрактных фраз.</div>
+            <div class="item"><div class="line-input"></div>В шапке есть понятный призыв и удобная ссылка.</div>
+            <div class="item"><div class="line-input"></div>Имя и ник легко читаются и запоминаются.</div>
         </div>
 
-        <div class="blocks-container">
-            <div class="block">
-                <div class="block-title">1. Профиль и смыслы</div>
-                <div class="item"><div class="circle"></div>Понятно, кто вы и с какими запросами помогаете.</div>
-                <div class="item"><div class="circle"></div>Указана специализация без слишком абстрактных фраз.</div>
-                <div class="item"><div class="circle"></div>В шапке есть понятный призыв и удобная ссылка для связи.</div>
-                <div class="item"><div class="circle"></div>Имя и ник легко читаются и запоминаются.</div>
+        <div class="block">
+            <div class="block-title-wrap">
+                <span class="badge">БЛОК 2</span>
+                <span class="block-title-text">Контент и контакт</span>
             </div>
+            <div class="item"><div class="line-input"></div>Есть ответы на частые вопросы в закрепах.</div>
+            <div class="item"><div class="line-input"></div>Тексты разделены на абзацы, их приятно читать.</div>
+            <div class="item"><div class="line-input"></div>В блоге есть польза, рассказ о вас и приглашение на сессии.</div>
+            <div class="item"><div class="line-input"></div>ИИ помогает с текстами, но чувствуется ваш голос.</div>
+            <div class="item"><div class="line-input"></div>Темы постов отвечают на переживания аудитории.</div>
+        </div>
 
-            <div class="block">
-                <div class="block-title">2. Контент и контакт</div>
-                <div class="item"><div class="circle"></div>Есть закрепленные материалы с ответами на частые вопросы.</div>
-                <div class="item"><div class="circle"></div>Тексты разделены на абзацы, их приятно и легко читать.</div>
-                <div class="item"><div class="circle"></div>В блоге есть польза, рассказ о вас и приглашение на сессии.</div>
-                <div class="item"><div class="circle"></div>ИИ помогает с текстами, но в них чувствуется ваш живой голос.</div>
-                <div class="item"><div class="circle"></div>Темы постов отвечают на реальные переживания вашей аудитории.</div>
+        <div class="block">
+            <div class="block-title-wrap">
+                <span class="badge">БЛОК 3</span>
+                <span class="block-title-text">Услуги и прозрачность</span>
             </div>
+            <div class="item"><div class="line-input"></div>Понятно, с чего начать работу (первая сессия).</div>
+            <div class="item"><div class="line-input"></div>Стоимость услуг открыта и понятна сразу.</div>
+            <div class="item"><div class="line-input"></div>Услуги описаны ясно: для кого, как проходит, что дает.</div>
+            <div class="item"><div class="line-input"></div>Записаться легко, это не требует долгих переписок.</div>
+            <div class="item"><div class="line-input"></div>Обозначены правила отмены и переноса встреч.</div>
+        </div>
 
-            <div class="block">
-                <div class="block-title">3. Услуги и прозрачность</div>
-                <div class="item"><div class="circle"></div>Понятно, с чего начать работу (диагностика или первая сессия).</div>
-                <div class="item"><div class="circle"></div>Стоимость услуг открыта и понятна сразу.</div>
-                <div class="item"><div class="circle"></div>Услуги описаны ясно: для кого, как проходит и что дает.</div>
-                <div class="item"><div class="circle"></div>Записаться легко, это не требует долгих переписок.</div>
-                <div class="item"><div class="circle"></div>Бережно, но четко обозначены правила отмены и переноса встреч.</div>
+        <div class="block">
+            <div class="block-title-wrap">
+                <span class="badge">БЛОК 4</span>
+                <span class="block-title-text">Доверие и безопасность</span>
             </div>
+            <div class="item"><div class="line-input"></div>Есть примеры из практики — экологично и анонимно.</div>
+            <div class="item"><div class="line-input"></div>Можно найти отклики и отзывы реальных людей.</div>
+            <div class="item"><div class="line-input"></div>Понятно ваше образование и подход в работе.</div>
+            <div class="item"><div class="line-input"></div>Вы открыто говорите о своих ценностях.</div>
+            <div class="item"><div class="line-input"></div>Вы не даете нереалистичных гарантий.</div>
+        </div>
 
-            <div class="block">
-                <div class="block-title">4. Доверие и безопасность</div>
-                <div class="item"><div class="circle"></div>Есть примеры из практики — экологично и конфиденциально.</div>
-                <div class="item"><div class="circle"></div>Можно найти отклики и отзывы реальных людей.</div>
-                <div class="item"><div class="circle"></div>Понятно ваше образование, методы и подход в работе.</div>
-                <div class="item"><div class="circle"></div>Вы открыто говорите о своих профессиональных ценностях.</div>
-                <div class="item"><div class="circle"></div>Вы не даете нереалистичных гарантий и обещаний.</div>
+        <div class="block" style="grid-column: 1 / -1;">
+            <div class="block-title-wrap">
+                <span class="badge">БЛОК 5</span>
+                <span class="block-title-text">Визуал и эстетика</span>
             </div>
-
-            <div class="block" style="grid-column: 1 / -1;">
-                <div class="block-title">5. Визуал и эстетика</div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 30px;">
-                    <div>
-                        <div class="item"><div class="circle"></div>Фотографии приятные, хорошего качества, без тяжелых фильтров.</div>
-                        <div class="item"><div class="circle"></div>Внешний вид профиля аккуратный и отражает ваш характер.</div>
-                        <div class="item"><div class="circle"></div>Рабочие материалы (памятки, гайды) оформлены в едином стиле.</div>
-                    </div>
-                    <div>
-                        <div class="item"><div class="circle"></div>В блоге есть вы, а не только картинки из интернета.</div>
-                        <div class="item"><div class="circle"></div>Шрифты на видео и фото легко читаются.</div>
-                    </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 30px;">
+                <div>
+                    <div class="item"><div class="line-input"></div>Фотографии приятные, без тяжелых фильтров.</div>
+                    <div class="item"><div class="line-input"></div>Вид профиля аккуратный и отражает ваш характер.</div>
+                    <div class="item"><div class="line-input"></div>Рабочие материалы оформлены в едином стиле.</div>
+                </div>
+                <div>
+                    <div class="item"><div class="line-input"></div>В блоге есть вы, а не только картинки из интернета.</div>
+                    <div class="item"><div class="line-input"></div>Шрифты на видео и фото легко читаются.</div>
                 </div>
             </div>
         </div>
-
-        <div class="footer-results">
-            <h3>Результаты (1 галочка = 1 балл):</h3>
-            <div class="result-item"><strong>20-24 балла:</strong> Прекрасная база. Людям комфортно в вашем профиле, они понимают вашу ценность и готовы записываться на сессии.</div>
-            <div class="result-item"><strong>12-19 баллов:</strong> Хорошее начало, но есть слепые зоны. Закройте пробелы, чтобы аудитории было проще решиться на работу с вами.</div>
-            <div class="result-item"><strong>0-11 баллов:</strong> Требуется доработка. Сейчас людям сложно понять, чем именно вы можете им помочь, из-за чего они уходят к другим специалистам.</div>
-        </div>
-        
-        <div class="copyright">Анна Энынь | anyainin</div>
     </div>
+
+    <div class="footer-results">
+        <h3>Результаты (1 пункт = 1 балл):</h3>
+        <div class="result-item"><b>20-24 балла:</b> Прекрасная база. Людям комфортно в вашем профиле, они готовы записываться.</div>
+        <div class="result-item"><b>12-19 баллов:</b> Хорошее начало, но есть слепые зоны. Закройте пробелы, чтобы аудитории было проще решиться.</div>
+        <div class="result-item"><b>0-11 баллов:</b> Требуется доработка. Сейчас людям сложно понять вашу ценность.</div>
+    </div>
+
+    <div class="final-cta">
+        <h2>Пример бережной упаковки смыслов</h2>
+        <p>
+            Хотите увидеть, как выглядит эстетичный продукт для помогающих практиков? Приглашаю познакомиться с моим интерактивным дневником саморефлексии.<br>
+            А если вам переслали этот файл, заглядывайте в канал <a href="https://t.me/+pcwJHYHxwgYyOWEy" style="color: var(--dark-green); font-weight: 500;">@pbanyainin</a>.
+        </p>
+        <a href="https://t.me/anyainin?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%2C%20%D1%8F%20%D0%B8%D0%B7%D1%83%D1%87%D0%B8%D0%BB%D0%B0%20%D1%82%D0%B2%D0%BE%D0%B9%20%D1%87%D0%B5%D0%BA-%D0%BB%D0%B8%D1%81%D1%82%20%D0%BF%D0%BE%20%D1%83%D0%BF%D0%B0%D0%BA%D0%BE%D0%B2%D0%BA%D0%B5.%20%D0%9C%D0%BD%D0%B5%20%D0%BD%D1%83%D0%B6%D0%BD%D0%B0%20%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%20%D1%81%20%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B5%D0%B9" class="cta-button">
+            Написать мне
+        </a>
+    </div>
+    
+    <div class="copyright">Анна Энынь | anyainin</div>
 </div>
 
 </body>
